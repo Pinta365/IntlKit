@@ -1,4 +1,4 @@
-# IntlKit - TypeScript i18n (WIP)
+# IntlKit (WIP)
 
 IntlKit is a internationalization (i18n) library for TypeScript. Built with Deno, it's designed to be runtime-agnostic and seamlessly integrate with
 various frameworks.
@@ -20,4 +20,4 @@ various frameworks.
 
 ## License
 
-MIT
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.

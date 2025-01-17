@@ -1,7 +1,7 @@
 import type { IntlKitConfig, Locale, PluralCategory, TranslationData, TranslationKey, TranslationValue } from "./types.ts";
 import { InvalidTranslationDataError } from "./errors.ts";
 
-export const translations: TranslationData = {};
+export let translations: TranslationData = {};
 
 let currentConfig: IntlKitConfig;
 
@@ -78,6 +78,19 @@ export function setTranslations(data: TranslationValue, locale: Locale) {
         translations[locale] = data;
     } else {
         throw new InvalidTranslationDataError("Invalid input for setTranslations", locale);
+    }
+}
+
+/**
+ * Replace the whole translation data.
+ *
+ * @param data - The translation data.
+ */
+export function setTranslation(data: TranslationData) {
+    if (typeof data === "object") {
+        translations = data;
+    } else {
+        throw new InvalidTranslationDataError("Invalid input for setTranslations");
     }
 }
 

@@ -39,10 +39,10 @@ export class InvalidTranslationDataError extends IntlKitError {
      * Creates a new InvalidTranslationDataError instance.
      *
      * @param reason - The reason for error, short description.
-     * @param locale - The invalid locale.
+     * @param locale - (Optional )The invalid locale.
      */
-    constructor(reason: string, locale: string) {
-        super(`${reason}, Locale: "${locale}"`);
+    constructor(reason: string, locale?: string) {
+        super(locale ? `${reason}, Locale: "${locale}"` : `${reason}`);
         this.name = "InvalidTranslationDataError";
     }
 }
