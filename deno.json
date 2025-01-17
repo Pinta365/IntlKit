@@ -1,0 +1,14 @@
+{
+    "imports": {
+        "@std/assert": "jsr:@std/assert@1",
+
+        "@intlkit/intlkit": "./packages/intlkit/mod.ts"
+    },
+    "fmt": {
+        "lineWidth": 150,
+        "indentWidth": 4
+    },
+    "workspace": [
+        "./packages/intlkit"
+    ]
+}

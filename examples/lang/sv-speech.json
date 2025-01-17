@@ -1,0 +1,18 @@
+{
+    "negative": "minus",
+    "zero": "noll",
+    "units": ["ett", "två", "tre", "fyra", "fem", "sex", "sju", "åtta", "nio"],
+    "teens": ["tio", "elva", "tolv", "tretton", "fjorton", "femton", "sexton", "sjutton", "arton", "nitton"],
+    "tens": ["tjugo", "trettio", "fyrtio", "femtio", "sextio", "sjuttio", "åttio", "nittio"],
+    "hundred": "hundra",
+    "thousand": "tusen",
+    "million": "miljoner",
+    "rules": [
+        { "type": "replace", "pattern": "ett miljoner", "replacement": "en miljon" },
+        {
+            "type": "replace",
+            "pattern": "(tjugo|trettio|fyrtio|femtio|sextio|sjuttio|åttio|nittio) (ett|två|tre|fyra|fem|sex|sju|åtta|nio)",
+            "replacement": "$1$2"
+        }
+    ]
+}

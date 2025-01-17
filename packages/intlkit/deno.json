@@ -1,0 +1,9 @@
+{
+    "name": "@intlkit/intlkit",
+    "version": "0.0.1",
+    "imports": {
+    },
+    "exports": {
+        ".": "./mod.ts"
+    }
+}

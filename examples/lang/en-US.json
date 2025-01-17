@@ -1,0 +1,37 @@
+{
+    "welcome": "Welcome, {{name}}! Explore our curated collection.",
+    "switchLanguage": "Switch to {{language}}",
+    "apples": {
+        "zero": "You have no apples in your basket.",
+        "one": "You have one delicious apple in your basket.",
+        "other": "You have {{quantity}} juicy apples in your basket."
+    },
+    "menu": {
+        "home": "Home",
+        "products": "Products",
+        "about": "About"
+    },
+    "newMessages": {
+        "zero": "You have no new messages",
+        "one": "You have 1 new message",
+        "other": "You have {{quantity}} new messages"
+    },
+    "slogan": "Crafted with passion, delivered with care.",
+    "discordLink": "Reach out on Discord",
+    "cart": {
+        "zero": "Your cart is empty.",
+        "one": "You have 1 item in your cart.",
+        "other": "You have {{quantity}} items in your cart."
+    },
+    "receipt": {
+        "title": "Receipt",
+        "text": "This is a receipt for your apple purchase.",
+        "date": "Date",
+        "time": "Time",
+        "total": "Total"
+    },
+    "language": {
+        "en-US": "English",
+        "sv-SE": "Swedish"
+    }
+}

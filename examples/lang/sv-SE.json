@@ -1,0 +1,37 @@
+{
+    "welcome": "Välkommen, {{name}}! Utforska vår noggrant utvalda kollektion.",
+    "switchLanguage": "Byt till {{language}}",
+    "apples": {
+        "zero": "Du har inga äpplen i din korg.",
+        "one": "Du har ett utsökt äpple i din korg.",
+        "other": "Du har {{quantity}} saftiga äpplen i din korg."
+    },
+    "menu": {
+        "home": "Hem",
+        "products": "Produkter",
+        "about": "Om oss"
+    },
+    "newMessages": {
+        "zero": "Du har inga nya meddelanden",
+        "one": "Du har 1 nytt meddelande",
+        "other": "Du har {{quantity}} nya meddelanden"
+    },
+    "slogan": "Tillverkad med passion, levererad med omsorg.",
+    "discordLink": "Kontakta oss på Discord",
+    "cart": {
+        "zero": "Din varukorg är tom.",
+        "one": "Du har 1 vara i din varukorg.",
+        "other": "Du har {{quantity}} varor i din varukorg."
+    },
+    "receipt": {
+        "title": "Kvitto",
+        "text": "Detta är ett kvitto för ditt äppelköp.",
+        "date": "Datum",
+        "time": "Tid",
+        "total": "Totalt"
+    },
+    "language": {
+        "en-US": "Engelska",
+        "sv-SE": "Svenska"
+    }
+}
