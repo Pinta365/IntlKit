@@ -30,7 +30,10 @@ function interpolateVariables(
     }
 
     if (options.quantity !== undefined) {
-        result = (result as string).replace(/{{quantity}}/g, String(options.quantity));
+        result = (result as string).replace(
+            /{{quantity}}/g,
+            String(options.quantity),
+        );
     }
     return result;
 }
@@ -49,12 +52,13 @@ function interpolateVariables(
  * @throws {MissingTranslationError} If the translation key is missing and throwOnError is true.
  * @throws {InvalidLocaleError} If the locale is invalid and throwOnError is true.
  */
-export function t(
+export function translate(
     key: TranslationKey,
     options?: TranslateOptions,
 ): TranslationValue {
     const intlKitConfig = intlKit();
-    const requestedLocale = options?.locale || intlKitConfig.locale || intlKitConfig.defaultLocale;
+    const requestedLocale = options?.locale || intlKitConfig.locale ||
+        intlKitConfig.defaultLocale;
     let locale = requestedLocale;
     if (!translations[locale]) {
         const languageCode = locale.split("-")[0];
@@ -147,7 +151,10 @@ export function t(
                 ? translation[pluralCategory]
                 : translation as string;
         } else if (intlKitConfig.polyfillZeroCategory) {
-            if (typeof translation === "object" && translation["zero"] && options.quantity === 0) {
+            if (
+                typeof translation === "object" && translation["zero"] &&
+                options.quantity === 0
+            ) {
                 result = translation["zero"];
             } else {
                 const pluralCategory = getPluralCategory(
@@ -182,7 +189,9 @@ export function t(
     const placeholders = (result as string).match(/{{[^}]+}}/g);
     if (placeholders) {
         const missingVariables = placeholders.join(", ");
-        throw new Error(`Missing variable "${missingVariables}" for translation key "${key}"`);
+        throw new Error(
+            `Missing variable "${missingVariables}" for translation key "${key}"`,
+        );
     }
 
     return result;

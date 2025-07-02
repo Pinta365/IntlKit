@@ -1,6 +1,6 @@
 import { assertEquals } from "@std/assert";
-import { loadSpeechMapping, numberToSpeechCardinal, SpeechMapping } from "@intlkit/intlkit";
-import svSpeech from "../examples/lang/sv-speech.json" with { type: "json" };
+import { loadSpeechMapping, numberToSpeechCardinal, SpeechMapping } from "@intlkit/speech";
+import svSpeech from "../../examples/lang/sv-speech.json" with { type: "json" };
 
 const speechMapping = svSpeech as SpeechMapping;
 

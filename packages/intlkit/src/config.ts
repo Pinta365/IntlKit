@@ -56,6 +56,13 @@ export function setLocale(locale: Locale) {
 }
 
 /**
+ * Gets the current locale for IntlKit.
+ */
+export function getLocale(): Locale {
+    return currentConfig.locale || currentConfig.defaultLocale;
+}
+
+/**
  * Gets the current translations for the specified locale.
  *
  * @param locale - The locale for which to retrieve translations.
@@ -77,20 +84,40 @@ export function setTranslations(data: TranslationValue, locale: Locale) {
     if (typeof data === "object") {
         translations[locale] = data;
     } else {
-        throw new InvalidTranslationDataError("Invalid input for setTranslations", locale);
+        throw new InvalidTranslationDataError(
+            "Invalid input for setTranslations",
+            locale,
+        );
     }
 }
 
 /**
- * Replace the whole translation data.
+ * Merges new translations into the existing translations for a specific locale.
  *
- * @param data - The translation data.
+ * @param data - The translation data to add or update.
+ * @param locale - The locale for which to add the translations.
  */
-export function setTranslation(data: TranslationData) {
+export function addTranslations(data: TranslationValue, locale: Locale) {
+    if (typeof data === "object") {
+        translations[locale] = { ...(translations[locale] || {}), ...data };
+    } else {
+        throw new InvalidTranslationDataError(
+            "Invalid input for addTranslations",
+            locale,
+        );
+    }
+}
+
+/**
+ * Replaces the entire translation data for all locales.
+ *
+ * @param data - The new translation data for all locales.
+ */
+export function replaceAllTranslations(data: TranslationData) {
     if (typeof data === "object") {
         translations = data;
     } else {
-        throw new InvalidTranslationDataError("Invalid input for setTranslations");
+        throw new InvalidTranslationDataError("Invalid input for replaceAllTranslations");
     }
 }
 
@@ -118,7 +145,10 @@ export function wipeTranslations() {
  * @param locale - The locale for which to set the rule.
  * @param rule - The pluralization rule function.
  */
-export function setPluralizationRule(locale: Locale, rule: (count: number) => PluralCategory) {
+export function setPluralizationRule(
+    locale: Locale,
+    rule: (count: number) => PluralCategory,
+) {
     const currentRules = intlKit().pluralizationRules;
     intlKit({
         pluralizationRules: {

@@ -1,17 +1,8 @@
 // examples/hono.ts example usage.
 import { Hono } from "jsr:@hono/hono";
-import {
-    formatDate,
-    formatNumber,
-    formatTime,
-    intlKit,
-    loadSpeechMapping,
-    numberToSpeechCardinal,
-    setLocale,
-    setTranslations,
-    SpeechMapping,
-    t,
-} from "@intlkit/intlkit";
+import { intlKit, setLocale, setTranslations, translate as t } from "@intlkit/intlkit";
+import { formatDate, formatNumber, formatTime } from "@intlkit/formatters";
+import { loadSpeechMapping, numberToSpeechCardinal, SpeechMapping } from "@intlkit/speech";
 
 import enTranslations from "./lang/en-US.json" with { type: "json" };
 import svTranslations from "./lang/sv-SE.json" with { type: "json" };
@@ -19,9 +10,11 @@ import svSpeech from "./lang/sv-speech.json" with { type: "json" };
 
 intlKit({ defaultLocale: "en-US" });
 
-//Add language files for translations.
+// Use setTranslations to replace all translations for a locale
 setTranslations(enTranslations, "en-US");
 setTranslations(svTranslations, "sv-SE");
+// If you want to merge, use addTranslations instead
+// addTranslations({ newKey: "value" }, "en-US");
 
 //Add Swedish speech mapping for number to text conversion.
 const speechMapping = svSpeech as SpeechMapping;

@@ -1,5 +1,5 @@
-import type { Locale } from "../types.ts";
-import { intlKit } from "../config.ts";
+import type { Locale } from "../intlkit/src/types.ts";
+import { intlKit } from "../intlkit/src/config.ts";
 
 /**
  * Formats a date using Intl.DateTimeFormat.

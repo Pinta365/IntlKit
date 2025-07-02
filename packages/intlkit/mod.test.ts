@@ -1,6 +1,5 @@
-// mod.test.ts
 import { assertEquals } from "@std/assert";
-import { formatDate, formatNumber, formatTime, intlKit, setLocale, setTranslations, t } from "@intlkit/intlkit";
+import { addTranslations, getTranslations, intlKit, replaceAllTranslations, setLocale, setTranslations, translate as t } from "@intlkit/intlkit";
 
 Deno.test("t() handles missing keys correctly", () => {
     intlKit({ throwOnError: true });
@@ -62,37 +61,24 @@ Deno.test("t() handles nested keys", () => {
     assertEquals(t("greetings.hello"), "Hello");
 });
 
-Deno.test("formatNumber() formats numbers correctly", () => {
-    assertEquals(formatNumber(12345.67, "sv-SE"), "12\u00A0345,67");
-    assertEquals(formatNumber(12345.67, "en-US"), "12,345.67");
-    assertEquals(formatNumber(12345.67, "de-DE"), "12.345,67");
-    assertEquals(
-        formatNumber(12345.67, "en-US", {
-            style: "currency",
-            currency: "USD",
-        }),
-        "$12,345.67",
-    );
+Deno.test("addTranslations merges new keys", () => {
+    setTranslations({ greeting: "Hello" }, "en-US");
+    addTranslations({ farewell: "Goodbye" }, "en-US");
+    const result = getTranslations("en-US");
+    if (result.greeting !== "Hello" || result.farewell !== "Goodbye") {
+        throw new Error("addTranslations did not merge correctly");
+    }
 });
 
-Deno.test("formatDate() formats dates correctly", () => {
-    const date = new Date(2025, 0, 10);
-    assertEquals(formatDate(date, "en-US"), "1/10/2025");
-    assertEquals(formatDate(date, "de-DE"), "10.1.2025");
-    assertEquals(
-        formatDate(date, "en-US", {
-            weekday: "long",
-            year: "numeric",
-            month: "long",
-            day: "numeric",
-        }),
-        "Friday, January 10, 2025",
-    );
-});
-
-Deno.test("formatTime() formats time correctly", () => {
-    const date = new Date(2025, 0, 10, 14, 26, 35);
-
-    assertEquals(formatTime(date, "en-US"), "2:26\u202FPM");
-    assertEquals(formatTime(date, "de-DE"), "14:26");
+Deno.test("replaceAllTranslations replaces all locales", () => {
+    setTranslations({ greeting: "Hello" }, "en-US");
+    setTranslations({ greeting: "Hej" }, "sv-SE");
+    replaceAllTranslations({ "fr-FR": { greeting: "Bonjour" } });
+    const result = getTranslations("fr-FR");
+    if (result.greeting !== "Bonjour") {
+        throw new Error("replaceAllTranslations did not replace correctly");
+    }
+    if (getTranslations("en-US")) {
+        throw new Error("Old translations were not removed");
+    }
 });

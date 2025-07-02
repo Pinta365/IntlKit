@@ -14,7 +14,9 @@ export interface TranslationNamespace {
 }
 
 export interface TranslationData {
-    [locale: Locale]: TranslationNamespace | { [namespace: string]: TranslationNamespace };
+    [locale: Locale]: TranslationNamespace | {
+        [namespace: string]: TranslationNamespace;
+    };
 }
 
 export interface TranslateOptions {
@@ -25,7 +27,7 @@ export interface TranslateOptions {
 
 export interface IntlKitConfig {
     defaultLocale: Locale;
-    locale: Locale;
+    locale?: Locale;
 
     polyfillZeroCategory?: boolean;
 

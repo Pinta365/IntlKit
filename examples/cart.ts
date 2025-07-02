@@ -1,5 +1,5 @@
 //Import library functions
-import { intlKit, setLocale, setTranslations, t } from "@intlkit/intlkit";
+import { intlKit, setLocale, setTranslations, translate as t } from "@intlkit/intlkit";
 
 //Import translated texts.
 import enTranslations from "./lang/en-US.json" with { type: "json" };
@@ -21,6 +21,7 @@ function print() {
     console.log(welcomeMessage);
 
     const cartMessage = t("cart", { quantity: cartItemCount });
+
     console.log(cartMessage, "\n");
 }
 

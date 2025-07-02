@@ -1,6 +1,6 @@
-import type { Locale } from "../types.ts";
-import { intlKit } from "../config.ts";
-import { getPluralCategory } from "../plural.ts";
+import type { Locale } from "../intlkit/src/types.ts";
+import { intlKit } from "../intlkit/src/config.ts";
+import { getPluralCategory } from "../intlkit/src/plural.ts";
 
 /**
  * Formats a cardinal number based on pluralization rules.
@@ -27,7 +27,8 @@ export function formatCardinal(
 ): string {
     const pluralCategory = getPluralCategory(number, locale);
 
-    const formatString = (number === 0 && format.zero) || format[pluralCategory] || format.other;
+    const formatString = (number === 0 && format.zero) ||
+        format[pluralCategory] || format.other;
 
     return formatString.replace("{{number}}", number.toString());
 }
@@ -61,7 +62,10 @@ export function formatOrdinal(
         options = localeOrOptions;
     }
 
-    const pluralCategory = getPluralCategory(number, locale, { type: "ordinal", ...options });
+    const pluralCategory = getPluralCategory(number, locale, {
+        type: "ordinal",
+        ...options,
+    });
     const localeSuffixes = suffixes || {
         one: "st",
         two: "nd",
