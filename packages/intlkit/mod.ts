@@ -22,3 +22,5 @@ export type {
     TranslationNamespace,
     TranslationValue,
 } from "./src/types.ts";
+
+export { getPluralCategory } from "./src/plural.ts";

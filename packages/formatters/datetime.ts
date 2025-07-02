@@ -1,4 +1,4 @@
-import type { Locale } from "../intlkit/src/types.ts";
+import type { Locale } from "@intlkit/intlkit";
 import { intlKit } from "@intlkit/intlkit";
 
 /**

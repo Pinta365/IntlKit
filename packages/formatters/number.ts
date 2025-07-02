@@ -1,6 +1,5 @@
-import type { Locale } from "../intlkit/src/types.ts";
-import { intlKit } from "@intlkit/intlkit";
-import { getPluralCategory } from "../intlkit/src/plural.ts";
+import type { Locale } from "@intlkit/intlkit";
+import { getPluralCategory, intlKit } from "@intlkit/intlkit";
 
 /**
  * Formats a cardinal number based on pluralization rules.
