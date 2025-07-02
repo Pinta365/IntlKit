@@ -22,20 +22,28 @@ import { addTranslations, setLocale, translate } from "@intlkit/intlkit";
 ```ts
 import { addTranslations, setLocale, translate } from "@intlkit/intlkit";
 
-addTranslations("en", { greeting: "Hello" });
+addTranslations({ greeting: "Hello" }, "en");
 setLocale("en");
 console.log(translate("greeting")); // "Hello"
 ```
 
 ## API
 
-- `addTranslations(locale: string, data: TranslationData)`
-- `setLocale(locale: string)`
-- `getLocale(): string`
-- `translate(key: string, options?: TranslateOptions): string`
-- `wipeTranslations()`
-- `replaceAllTranslations(locale: string, data: TranslationData)`
-- Types: `IntlKitConfig`, `Locale`, `TranslateOptions`, `TranslationData`, etc.
+### Functions
+
+- `intlKit(config?: Partial<IntlKitConfig>): IntlKitConfig` – Initialize or update IntlKit configuration.
+- `setLocale(locale: string)` – Set the current locale.
+- `getLocale(): string` – Get the current locale.
+- `getTranslations(locale: string): { [key: string]: TranslationValue }` – Get translations for a locale.
+- `setTranslations(data: TranslationValue, locale: string)` – Set translations for a locale.
+- `addTranslations(data: TranslationValue, locale: string)` – Merge new translations into a locale.
+- `replaceAllTranslations(data: TranslationData)` – Replace all translations for all locales.
+- `wipeTranslation(locale: string)` – Remove translations for a specific locale.
+- `wipeTranslations()` – Remove all translations.
+- `setPluralizationRule(locale: string, rule: (count: number) => PluralCategory)` – Set a custom pluralization rule for a locale.
+- `translate(key: string, options?: TranslateOptions): string` – Translate a key with options.
+- `getPluralCategory(quantity: number, locale: string, options?: Intl.PluralRulesOptions): PluralCategory` – Get the plural category for a number and
+  locale.
 
 ## License
 
