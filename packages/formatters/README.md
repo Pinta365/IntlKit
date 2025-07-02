@@ -27,7 +27,7 @@ console.log(formatOrdinal(3));
 //Outputs "3rd"
 console.log(formatOrdinal(4));
 //Outputs "4th"
-console.log(formatOrdinal(9, "sv-SE", {one: ":a",other: ":e"})); 
+console.log(formatOrdinal(9, "sv-SE", { one: ":a", other: ":e" }));
 //Outputs "9:e" (using Swedish ordinal rules)
 ```
 

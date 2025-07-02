@@ -1,5 +1,5 @@
 import type { Locale } from "../intlkit/src/types.ts";
-import { intlKit } from "../intlkit/src/config.ts";
+import { intlKit } from "@intlkit/intlkit";
 import { getPluralCategory } from "../intlkit/src/plural.ts";
 
 /**
