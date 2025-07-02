@@ -1,9 +1,6 @@
 {
     "imports": {
-        "@std/assert": "jsr:@std/assert@1",
-        "@intlkit/intlkit": "./packages/intlkit/mod.ts",
-        "@intlkit/speech": "./packages/speech/mod.ts",
-        "@intlkit/formatters": "./packages/formatters/mod.ts"
+        "@std/assert": "jsr:@std/assert@1"
     },
     "fmt": {
         "lineWidth": 150,
